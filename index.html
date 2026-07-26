@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScreenCap Studio | Generador de Mockups & Capturas de Marketing 4K</title>
+  <meta name="description" content="Crea capturas de pantalla de marketing impresionantes con marcos 3D de iPhone, MacBook y navegador. Exportación PNG 4K directa.">
+  
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- App Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <!-- Left Sidebar: Controls & Options -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <span>ScreenCap <strong>Studio</strong></span>
+        </div>
+        <span class="version-badge">v1.0 Pro</span>
+      </div>
+
+      <div class="sidebar-content">
+
+        <!-- 1. Upload & Images -->
+        <section class="control-section">
+          <h3 class="section-title"><i class="fa-solid fa-cloud-arrow-up"></i> Imagen de Captura</h3>
+          
+          <div class="file-dropzone" id="file-dropzone">
+            <i class="fa-solid fa-image drop-icon"></i>
+            <div class="drop-text">
+              <strong>Arrastra tu captura aquí</strong>
+              <span>o haz clic para explorar archivos</span>
+            </div>
+            <input type="file" id="image-file-input" accept="image/*">
+          </div>
+
+          <div class="sample-picker">
+            <span class="sublabel">O usa una captura de muestra:</span>
+            <div class="sample-buttons">
+              <button class="btn-sample active" data-sample="dashboard">
+                <i class="fa-solid fa-chart-line"></i> Web App
+              </button>
+              <button class="btn-sample" data-sample="mobile">
+                <i class="fa-solid fa-mobile-screen"></i> Mobile App
+              </button>
+              <button class="btn-sample" data-sample="code">
+                <i class="fa-solid fa-code"></i> Código
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2. Device Frame Selector -->
+        <section class="control-section">
+          <h3 class="section-title"><i class="fa-solid fa-display"></i> Marco del Dispositivo</h3>
+          
+          <div class="grid-picker">
+            <button class="picker-card active" data-frame="browser">
+              <i class="fa-solid fa-globe"></i>
+              <span>Navegador</span>
+            </button>
+            <button class="picker-card" data-frame="iphone">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+              <span>iPhone 16</span>
+            </button>
+            <button class="picker-card" data-frame="macbook">
+              <i class="fa-solid fa-laptop"></i>
+              <span>MacBook</span>
+            </button>
+            <button class="picker-card" data-frame="card">
+              <i class="fa-solid fa-square"></i>
+              <span>Tarjeta</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 3. Aspect Ratio Presets -->
+        <section class="control-section">
+          <h3 class="section-title"><i class="fa-solid fa-crop-simple"></i> Formato de Lienzo</h3>
+          
+          <div class="ratio-picker">
+            <button class="ratio-btn active" data-ratio="16:9">
+              <strong>16 : 9</strong>
+              <span>Twitter / PH</span>
+            </button>
+            <button class="ratio-btn" data-ratio="1:1">
+              <strong>1 : 1</strong>
+              <span>Instagram</span>
+            </button>
+            <button class="ratio-btn" data-ratio="9:16">
+              <strong>9 : 16</strong>
+              <span>Story / Reel</span>
+            </button>
+            <button class="ratio-btn" data-ratio="4:3">
+              <strong>4 : 3</strong>
+              <span>App Store</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- 4. Background Customization -->
+        <section class="control-section">
+          <h3 class="section-title"><i class="fa-solid fa-palette"></i> Fondo y Gradientes</h3>
+          
+          <div class="preset-gradients">
+            <button class="gradient-dot active" data-grad="aurora" style="background: linear-gradient(135deg, #4f46e5, #ec4899, #06b6d4);" title="Aurora Indigo"></button>
+            <button class="gradient-dot" data-grad="sunset" style="background: linear-gradient(135deg, #f59e0b, #ef4444, #8b5cf6);" title="Sunset Amber"></button>
+            <button class="gradient-dot" data-grad="midnight" style="background: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81);" title="Midnight Cyber"></button>
+            <button class="gradient-dot" data-grad="emerald" style="background: linear-gradient(135deg, #059669, #10b981, #06b6d4);" title="Emerald Mint"></button>
+            <button class="gradient-dot" data-grad="dark" style="background: linear-gradient(135deg, #18181b, #27272a, #09090b);" title="Monochrome Dark"></button>
+          </div>
+
+          <div class="form-row">
+            <label for="bg-color-picker">Color Personalizado</label>
+            <input type="color" id="bg-color-picker" value="#4f46e5">
+          </div>
+        </section>
+
+        <!-- 5. 3D Tilt & Adjustments Sliders -->
+        <section class="control-section">
+          <h3 class="section-title"><i class="fa-solid fa-sliders"></i> Ajustes 3D & Sombra</h3>
+          
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="slider-tilt-x">Inclinación Vertical (Rotate X)</label>
+              <span id="val-tilt-x">0°</span>
+            </div>
+            <input type="range" id="slider-tilt-x" min="-30" max="30" value="0">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="slider-tilt-y">Rotación Horizontal (Rotate Y)</label>
+              <span id="val-tilt-y">0°</span>
+            </div>
+            <input type="range" id="slider-tilt-y" min="-30" max="30" value="0">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="slider-padding">Relleno / Padding</label>
+              <span id="val-padding">60px</span>
+            </div>
+            <input type="range" id="slider-padding" min="20" max="140" value="60">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="slider-shadow">Profundidad de Sombra</label>
+              <span id="val-shadow">40px</span>
+            </div>
+            <input type="range" id="slider-shadow" min="0" max="100" value="40">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-header">
+              <label for="slider-radius">Esquinas Redondeadas</label>
+              <span id="val-radius">16px</span>
+            </div>
+            <input type="range" id="slider-radius" min="0" max="40" value="16">
+          </div>
+        </section>
+
+        <!-- 6. Text & Heading Overlay -->
+        <section class="control-section">
+          <h3 class="section-title"><i class="fa-solid fa-font"></i> Texto de Titular</h3>
+          
+          <div class="form-group">
+            <label for="input-heading">Titular de Marketing</label>
+            <input type="text" id="input-heading" placeholder="Ej: Lanza tu SaaS en minutos">
+          </div>
+
+          <div class="form-group">
+            <label for="input-subheading">Subtítulo o Descripción</label>
+            <input type="text" id="input-subheading" placeholder="Ej: Disponible en web y móvil">
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Export Footer -->
+      <div class="sidebar-footer">
+        <button id="export-png-btn" class="btn-export">
+          <i class="fa-solid fa-download"></i> Descargar PNG 4K
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Viewport Canvas Preview Stage -->
+    <main class="stage">
+      <header class="stage-header">
+        <div class="canvas-dimensions-info">
+          <i class="fa-solid fa-up-right-and-down-left-from-center"></i>
+          <span id="stage-resolution-text">1920 × 1080 px (16:9)</span>
+        </div>
+
+        <div class="stage-actions">
+          <button id="btn-reset-sliders" class="btn-stage" title="Restablecer ajustes">
+            <i class="fa-solid fa-rotate-left"></i> Reset
+          </button>
+        </div>
+      </header>
+
+      <!-- Interactive Canvas Wrapper -->
+      <div class="stage-canvas-container" id="stage-canvas-container">
+        <canvas id="main-canvas" width="1920" height="1080"></canvas>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Application Script -->
+  <script src="js/renderer.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
